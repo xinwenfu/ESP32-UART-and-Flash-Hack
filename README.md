@@ -5,7 +5,7 @@ There are three serial ports on the original ESP32. UART0 is often used for prog
 Please read the introduction to the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) at GitHub. On the Ubuntu VM, through VS Code, we can build the /home/iot/esp/esp-idf/examples/wifi/getting_started/station/ example, which connects the IoT kit to a wireless router (often called AP too), and flash the firmware onto the IoT kit.
 
 
-We now can perform ethical hack of the IoT kit and try to obtain the WiFi credentials embedded in the firmware. 
+We now can perform ethical hack of the IoT kit, try to obtain the WiFi credentials embedded in the firmware and even change the firmware. 
 
 ## Retrieve partition table
 Please refer to [the use of esptool.py](https://github.com/espressif/esptool). The following command will retrieve the partition table of the IoT kit flash in the binary format:
