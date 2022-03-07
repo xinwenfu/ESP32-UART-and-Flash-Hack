@@ -39,5 +39,6 @@ The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The chan
 esptool.py write_flash 0 flash_contents_good.bin
 ```
 
+# Notes
 
-
+[HxD](https://mh-nexus.de/en/hxd/) is a better freeware hex editor and disk editor for Windows than wxhexeditor.
