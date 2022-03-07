@@ -29,7 +29,7 @@ where 0 is the starting address and 0x400000 is the length of the flash of the E
 ## Use hex editor to view the firmware and search for sensitive info
 Students can use a hex editor (e.g. wxhexeditor) to search the WiFi credentials in the flash dump. The following commands show how to install and configure wxhexeditor.
 ```
-sudo apt-get install wxhexeditor	                    #Install wxhexeditor  and then run wxHexEditor
+sudo apt-get install wxhexeditor                      #Install wxhexeditor  and then run wxHexEditor
 sudo ln -s /usr/bin/wxHexEditor /usr/bin/wxhexeditor  #Create a symbolic to use the lowercase command wxhexeditor
 ```
 
