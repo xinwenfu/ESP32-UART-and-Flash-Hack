@@ -1,6 +1,6 @@
 # ESP32 UART and Flash Hack 
 
-There are three serial ports on the original ESP32. UART0 is often used for programming and communication with outside of ESP32 while the other two UART ports are unused. The Micro-USB connector of our IoT kit is connected to UART0 through a USB-UART bridge chip. If there is no protection of UART, a hacker can access the flash through UART. The access to UART can be protected by a password. That is, a user must enter the correct password to upload firmware and communicate with the IoT kit. 
+There are three serial ports on the original ESP32. UART0 is often used for programming and communication with outside of ESP32 while the other two UART ports are unused. The Micro-USB connector of our IoT kit is connected to UART0 through a USB-UART bridge chip. If there is no protection of UART0, a hacker can access the flash through UART0. The access to UART can be protected by a password. That is, a user must enter the correct password to upload firmware and communicate with the IoT kit. 
 
 Please read the introduction to the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) at GitHub. On the Ubuntu VM, through VS Code, we can build the /home/iot/esp/esp-idf/examples/wifi/getting_started/station/ example, which connects the IoT kit to a wireless router (often called AP too), and flash the firmware onto the IoT kit.
 
