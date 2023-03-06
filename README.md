@@ -8,7 +8,8 @@ Please read the introduction to the [WiFi station example](https://github.com/es
 
 ### Open the WiFi station example project
 Within VS Code, *File* -> *Open Folder* ... -> Navigate to the folder /home/iot/esp/esp-idf/examples/wifi/getting_started/station/ .> *Open*
-![image](https://user-images.githubusercontent.com/69218457/223019335-9143af50-390c-4526-a18d-9cd49f96c984.png)
+
+<img src="https://user-images.githubusercontent.com/69218457/223019335-9143af50-390c-4526-a18d-9cd49f96c984.png" width=500>
 
 
 We now can perform ethical hack of the IoT kit, try to obtain the WiFi credentials embedded in the firmware and even change the firmware. 
