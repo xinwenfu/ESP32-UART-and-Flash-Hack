@@ -72,7 +72,7 @@ sudo apt-get install wxhexeditor                      #Install wxhexeditor  and 
 sudo ln -s /usr/bin/wxHexEditor /usr/bin/wxhexeditor  #Create a symbolic to use the lowercase command wxhexeditor
 ```
 
-The following screenshot shows how to use Edit -> Find within wxhexeditor to search for some text.
+The following screenshot shows how to use *Edit* -> *Find* within wxhexeditor to search for some text.
 
 <img src="Imgs/wxhexeditor.PNG" width=640>
 
