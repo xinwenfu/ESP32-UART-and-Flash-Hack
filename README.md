@@ -66,11 +66,15 @@ where 0 is the starting address and 0x400000 is the length of the flash of the E
 ## Use hex editor to view the firmware and search for sensitive info
 Students can use a hex editor (e.g. wxhexeditor) to search the WiFi credentials in the flash dump. 
 
-**wxhexeditor is already installed in our Ubuntu VM**. No need of doing the following commands, which show how to install and configure wxhexeditor.
+**wxhexeditor is already installed in our Ubuntu VM**. No need of re-installing while the following commands show how to install and configure wxhexeditor.
 ```
 sudo apt-get install wxhexeditor                      #Install wxhexeditor  and then run wxHexEditor
 sudo ln -s /usr/bin/wxHexEditor /usr/bin/wxhexeditor  #Create a symbolic to use the lowercase command wxhexeditor
 ```
+
+The following screenshot shows how to use Edit -> Find within wxhexeditor to search for some text.
+
+<img src="Imgs/wxhexeditor.PNG" width=640>
 
 ## Change the firmware
 The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The changed flash dump can be flash back to the IoT kit. Another firmware may be written. esptool.py can be used to write the changed firmware back to the ESP32.
