@@ -27,20 +27,18 @@ Please refer to the screenshot above, build the project, flash device and monito
 <img src="Imgs/WiFi-Station-Connected.PNG" width=640>
 
 ## Retrieve partition table
-We now can perform ethical hack of the IoT kit, try to obtain the WiFi credentials embedded in the firmware and even change the firmware. 
-
-It has to be done within a terminal. We will use the ESP-IDF terminal within VS Code to do it
+We now can perform ethical hack of the IoT kit, try to obtain the WiFi credentials embedded in the firmware and even change the firmware. It has to be done within a terminal. We will use the ESP-IDF terminal within VS Code to do it.
 
 ### Start ESP-IDF terminal
 
-*Open ESP-IDF Terminal* as shown in the screenshot in [Configure WiFi](#configure-wifi). Within the terminal, run the following command to set environmental paths for all the tools.
+*Open ESP-IDF Terminal* as shown in the screenshot in [Configure WiFi](#configure-wifi). Within the terminal, run the following command to set environment vairables for all the tools.
 ```
 . $HOME/esp/esp-idf/export.sh
 ```
 
 ### Read flash
 
-**Note**: The current esp-idf has a bug with the Python tool esptool.py. Add the following shebang line to the start of the code at  /home/iot/esp/esp-idf/components/esptool_py/esptool/esptool.py if the shebang line is missing. For example, the editor *nano* can be used.
+**Note**: The current esp-idf has a bug with the Python tool *esptool.py*. Add the following shebang line to the start of the code at  /home/iot/esp/esp-idf/components/esptool_py/esptool/esptool.py if the shebang line is missing. For example, the editor *nano* can be used.
 ```
 #!/usr/bin/env python
 ```
@@ -66,7 +64,9 @@ esptool.py read_flash 0 0x400000 flash_contents.bin
 where 0 is the starting address and 0x400000 is the length of the flash of the ESP32-WROOM-32 surface-mount module board that our IoT kit uses. The whole flash in the binary format is saved in flash_contents.bin. 
 
 ## Use hex editor to view the firmware and search for sensitive info
-Students can use a hex editor (e.g. wxhexeditor) to search the WiFi credentials in the flash dump. The following commands show how to install and configure wxhexeditor.
+Students can use a hex editor (e.g. wxhexeditor) to search the WiFi credentials in the flash dump. 
+
+**wxhexeditor is already installed in our Ubuntu VM**. No need of doing the following commands, which show how to install and configure wxhexeditor.
 ```
 sudo apt-get install wxhexeditor                      #Install wxhexeditor  and then run wxHexEditor
 sudo ln -s /usr/bin/wxHexEditor /usr/bin/wxhexeditor  #Create a symbolic to use the lowercase command wxhexeditor
