@@ -26,14 +26,27 @@ Please refer to the screenshot above, build the project, flash device and monito
 
 <img src="Imgs/WiFi-Station-Connected.PNG" width=640>
 
+## Retrieve partition table
 We now can perform ethical hack of the IoT kit, try to obtain the WiFi credentials embedded in the firmware and even change the firmware. 
 
-## Retrieve partition table
+It has to be done within a terminal. We will use the ESP-IDF terminal within VS Code to do it
+
+### Start ESP-IDF terminal
+
+*Open ESP-IDF Terminal*. Within the terminal, run the following command to set environmental paths for all the tools.
+```
+. $HOME/esp/esp-idf/export.sh
+```
+
+### Read flash
+
 Please refer to [the use of esptool.py](https://github.com/espressif/esptool). The following command will retrieve the partition table of the IoT kit flash in the binary format:
 ```
 esptool.py read_flash 0x8000 0xc00 ptable.img
 ```
 where 0x8000 is the start address of the partition table and 0xc00 is the length of the partition table. The binary partition table is saved in ptable.img. 
+
+### Print out partition table
 
 Please refer to [the use of gen_esp32part.py](https://docs.espressif.com/projects/esp-idf/en/v3.0-rc1/api-guides/partition-tables.html). The following command will print out the partition table of our IoT kit in the CSV (comma-separated values) format. The partition table shows how the flash is partitioned. 
 ```
