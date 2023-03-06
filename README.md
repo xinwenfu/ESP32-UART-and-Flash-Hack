@@ -40,7 +40,7 @@ It has to be done within a terminal. We will use the ESP-IDF terminal within VS 
 
 ### Read flash
 
-**Note**: The current esp-idf has a bug with the Python tool esptool.py. Add the following shebang line to the start of the code at  /home/iot/esp/esp-idf/components/esptool_py/esptool/esptool.py. For example, the editor *nano* can be used.
+**Note**: The current esp-idf has a bug with the Python tool esptool.py. Add the following shebang line to the start of the code at  /home/iot/esp/esp-idf/components/esptool_py/esptool/esptool.py if the shebang line is missing. For example, the editor *nano* can be used.
 ```
 #!/usr/bin/env python
 ```
