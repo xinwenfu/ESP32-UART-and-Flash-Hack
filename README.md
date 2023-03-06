@@ -33,14 +33,17 @@ It has to be done within a terminal. We will use the ESP-IDF terminal within VS 
 
 ### Start ESP-IDF terminal
 
-*Open ESP-IDF Terminal* as shown in the screenshot in Section [Configure WiFi](#configure-wifi). Within the terminal, run the following command to set environmental paths for all the tools.
+*Open ESP-IDF Terminal* as shown in the screenshot in [Configure WiFi](#configure-wifi). Within the terminal, run the following command to set environmental paths for all the tools.
 ```
 . $HOME/esp/esp-idf/export.sh
 ```
 
-
-
 ### Read flash
+
+**Note**: The current esp-idf has a bug with the Python tool esptool.py. Add the following shebang line to the start of the code at  /home/iot/esp/esp-idf/components/esptool_py/esptool/esptool.py. For example, the editor *nano* can be used.
+```
+#!/usr/bin/env python
+```
 
 Please refer to [the use of esptool.py](https://github.com/espressif/esptool). The following command will retrieve the partition table of the IoT kit flash in the binary format:
 ```
