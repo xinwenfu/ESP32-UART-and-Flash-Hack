@@ -17,6 +17,12 @@ Once the WiFi station example project is opened, within VS Code, click the ESP-I
 
 <img src="Imgs/WiFi-Station.PNG" width=640>
 
+### Build, flash and monitor
+
+Please refer to the screenshot above, build the project, flash device and monitor device.
+
+<img src="Imgs/WiFi-Station-Connected.PNG" width=640>
+
 We now can perform ethical hack of the IoT kit, try to obtain the WiFi credentials embedded in the firmware and even change the firmware. 
 
 ## Retrieve partition table
