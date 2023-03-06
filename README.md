@@ -2,7 +2,13 @@
 
 There are three serial ports on the original ESP32. UART0 is often used for programming and communication with outside of ESP32 while the other two UART ports are unused. The Micro-USB connector of our IoT kit is connected to UART0 through a USB-UART bridge chip. If there is no protection of UART0, a hacker can access the flash through UART0. The access to UART can be protected by a password. That is, a user must enter the correct password to upload firmware and communicate with the IoT kit. 
 
+## Build and run the WiFi station firmware
+
 Please read the introduction to the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) at GitHub. On the Ubuntu VM, through VS Code, we can build the /home/iot/esp/esp-idf/examples/wifi/getting_started/station/ example, which connects the IoT kit to a wireless router (often called AP too), and flash the firmware onto the IoT kit.
+
+### Open the WiFi station example project
+Within VS Code, *File* -> *Open Folder* ... -> Navigate to the folder /home/iot/esp/esp-idf/examples/wifi/getting_started/station/ .> *Open*
+![image](https://user-images.githubusercontent.com/69218457/223019335-9143af50-390c-4526-a18d-9cd49f96c984.png)
 
 
 We now can perform ethical hack of the IoT kit, try to obtain the WiFi credentials embedded in the firmware and even change the firmware. 
