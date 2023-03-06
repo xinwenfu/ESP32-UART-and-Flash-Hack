@@ -11,6 +11,11 @@ Within VS Code, *File* -> *Open Folder* ... -> Navigate to the folder /home/iot/
 
 <img src="https://user-images.githubusercontent.com/69218457/223019335-9143af50-390c-4526-a18d-9cd49f96c984.png" width=640>
 
+### Configure WiFi
+
+Once the WiFi station example project is opened, within VS Code, click the ESP-IDF menuconfig icon, search WiFi. Configure *WiFi SSID* and *WiFi Password* and *Save* as shown in the screenshot below.
+
+<img src="Imgs/WiFi-Station.PNG" width=640>
 
 We now can perform ethical hack of the IoT kit, try to obtain the WiFi credentials embedded in the firmware and even change the firmware. 
 
