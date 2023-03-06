@@ -21,7 +21,7 @@ Once the WiFi station example project is opened, within VS Code, click the ESP-I
 
 Please refer to the screenshot above, build the project, flash device and monitor device.
 1. Build Project. *Show Running Tasks* to see the progress while building the project.
-2. Flash device. Choose the right USB port, e.g., /dev/ttyUSB0. You may need to *Open ESP-IDF Terminal* to see the progress of flashing so that you can press the BOOT button to flash the device.
+2. Flash device. Choose the right USB port, e.g., /dev/ttyUSB0. You may need to *Open ESP-IDF Terminal* to see the progress of flashing so that you can press the BOOT button on the board to flash the device.
 3. Monitor device. You shall see the ESP32 device is connected to the WiFi as the screenshot shown below.
 
 <img src="Imgs/WiFi-Station-Connected.PNG" width=640>
