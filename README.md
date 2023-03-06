@@ -63,7 +63,7 @@ esptool.py read_flash 0 0x400000 flash_contents.bin
 ```
 where 0 is the starting address and 0x400000 is the length of the flash of the ESP32-WROOM-32 surface-mount module board that our IoT kit uses. The whole flash in the binary format is saved in flash_contents.bin. 
 
-## Use hex editor to view the firmware and search for sensitive info
+## View firmware and search for sensitive info
 Students can use a hex editor (e.g. wxhexeditor) to search the WiFi credentials in the flash dump. 
 
 **wxhexeditor is already installed in our Ubuntu VM**. No need of re-installing while the following commands show how to install and configure wxhexeditor.
