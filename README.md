@@ -4,7 +4,7 @@ There are three serial ports on the original ESP32. UART0 is often used for prog
 
 ## Build and run the WiFi station firmware
 
-In this lab, we will work on the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) in our environment. On our Ubuntu VM, through VS Code, we can build the */home/iot/esp/esp-idf/examples/wifi/getting_started/station/* project, which connects the IoT kit to a wireless router (often called AP too), and flash the firmware onto the IoT kit.
+In this lab, we will work on the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) in our environment. On our Ubuntu VM, through VS Code, we can build the */home/iot/esp/esp-idf/examples/wifi/getting_started/station/* project, which connects the IoT kit to a wireless router (often called AP too), and flashes the firmware onto the IoT kit.
 
 ### Open the WiFi station example project
 Within VS Code, *File* -> *Open Folder* ... -> Navigate to the folder /home/iot/esp/esp-idf/examples/wifi/getting_started/station/ .> *Open*
