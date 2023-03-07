@@ -17,7 +17,7 @@ Within VS Code, *File* -> *Open Folder* ... -> Navigate to the folder /home/iot/
 
 ### Configure WiFi
 
-Once the WiFi station example project is opened, within VS Code, click the ESP-IDF menuconfig icon, search WiFi. Configure *WiFi SSID* and *WiFi Password* and *Save* as shown in the screenshot below.
+Once the WiFi station example project is opened, within VS Code, click the *ESP-IDF menuconfig* icon as shown in the screenshot below, search WiFi. Configure *WiFi SSID* and *WiFi Password* and *Save* as shown in the screenshot below.
 
 <img src="Imgs/WiFi-Station.PNG" width=640>
 
