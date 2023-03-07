@@ -1,6 +1,10 @@
 # ESP32 UART and Flash Hack 
 
+In this lab, students will learn ethical hack of the flash of ESP32 through UART.
+
 There are three serial ports on the original ESP32. UART0 is often used for programming and communication with outside of ESP32 while the other two UART ports are unused. The Micro-USB connector of our IoT kit is connected to UART0 through a USB-UART bridge chip. If there is no protection of UART0, a hacker can access the flash through UART0. The access to UART can be protected by a password. That is, a user must enter the correct password to upload firmware and communicate with the IoT kit. 
+
+If the UART and flash of a device are not protected, various exploits are possible.
 
 ## Build and run the WiFi station firmware
 
