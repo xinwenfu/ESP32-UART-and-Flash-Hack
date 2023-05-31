@@ -36,7 +36,7 @@ We now can perform the ethical hacking of the IoT kit, we will try to obtain the
 ### Start ESP-IDF terminal
 
 *Open ESP-IDF Terminal* as shown in the screenshot in [Configure WiFi](#configure-wifi). Within the terminal, run the following command to set environment variables for all the ESP-IDF tools.
-```
+```sh
 . $HOME/esp/esp-idf/export.sh
 ```
 
@@ -48,7 +48,7 @@ We now can perform the ethical hacking of the IoT kit, we will try to obtain the
 ```
 
 Please refer to [the use of esptool.py](https://docs.espressif.com/projects/esptool/en/latest/esp32/) for more information. The following command will retrieve the partition table of the IoT kit flash in the binary format:
-```
+```sh
 esptool.py read_flash 0x8000 0xc00 ptable.img
 ```
 where 0x8000 is the start address of the partition table and 0xc00 is the length of the partition table. The binary partition table is saved in ptable.img. 
@@ -56,7 +56,7 @@ where 0x8000 is the start address of the partition table and 0xc00 is the length
 ### Print out partition table
 
 Please refer to [the use of gen_esp32part.py](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html) for more information. The following command will print out the partition table of our IoT kit in the CSV (comma-separated values) format. The partition table shows how the flash memory of the ESP32 is partitioned. 
-```
+```sh
 gen_esp32part.py ptable.img
 ```
 
@@ -72,18 +72,29 @@ The first numeric value 0 is the starting address and 0x400000 is the length of 
 Students can use a hex editor (e.g. wxhexeditor) to search the WiFi credentials in the flash dump. 
 
 **wxhexeditor is already installed in our Ubuntu VM**. You don't have to reinstall the program if it is already present. However, if needed, you can use the following commands to install and set up wxhexeditor.
-```
+```sh
 sudo apt-get install wxhexeditor                      #Install wxhexeditor  and then run wxHexEditor
 sudo ln -s /usr/bin/wxHexEditor /usr/bin/wxhexeditor  #Create a symbolic to use the lowercase command wxhexeditor
+```
+
+This can be launched from the application page of Ubuntu, or the *Terminal*. The following is how to launch wxhexeditor and open a file "flash_contents.bin" from the *Terminal*.
+```sh
+wxhexeditor flash_contents.bin
 ```
 
 The following screenshot shows how to use *Edit* -> *Find* within wxhexeditor to search for some text.
 
 <img src="Imgs/wxhexeditor.PNG" width=640>
 
+
+**Notice**: When you run wxhexeditor, you may get an error when using the **find** utility as shown below. Click **Continue**, otherwise the program will exit.
+<img src="Imgs/WXhex-Error.png" width = 640>
+
+
+
 ## Change the firmware
 The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The changed flash dump can be flash back to the IoT kit. Another firmware may be written. esptool.py can be used to write the changed firmware back to the ESP32.
-```
+```sh
 esptool.py write_flash 0 flash_contents_good.bin
 ```
 
