@@ -87,7 +87,7 @@ The following screenshot shows how to use *Edit* -> *Find* within wxhexeditor to
 <img src="Imgs/wxhexeditor.PNG" width=640>
 
 
-**Notice**: When you run wxhexeditor, you may get an error when using the **find** utility as shown below. Click **Continue**, otherwise the program will exit.
+**Notice**: When you run wxhexeditor, you may get an error when using the *find* utility as shown below. Click *Continue*, otherwise the program will exit.
 <img src="Imgs/WXhex-Error.png" width = 640>
 
 
