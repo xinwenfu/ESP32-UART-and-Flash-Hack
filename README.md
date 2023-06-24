@@ -56,14 +56,14 @@ where 0x8000 is the start address of the partition table and 0xc00 is the length
 ### Print out partition table
 
 Please refer to [the use of gen_esp32part.py](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html) for more information. The following command will print out the partition table of our IoT kit in the CSV (comma-separated values) format. The partition table shows how the flash memory of the ESP32 is partitioned. 
-```
+```sh
 gen_esp32part.py ptable.img
 ```
 
 ## Search firmware for sensitive info
 ### Retrieve firmware
 The following command retrieves the entire flash memory of the device although students can also refer to the partition table and print out only the occupied part of the flash.
-```
+```sh
 esptool.py read_flash 0 0x400000 flash_contents.bin
 ```
 The first numeric value 0 is the starting address and 0x400000 is the length of the flash to copy which is the total size of the ESP32-WROOM-32 surface-mount module board's flash that our IoT kit uses. The entire flash in the binary format will be saved in the flash_contents.bin file. 
