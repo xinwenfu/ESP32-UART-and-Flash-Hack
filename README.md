@@ -42,21 +42,21 @@ We now can perform the ethical hacking of the IoT kit, we will try to obtain the
 
 ### Read flash
 
-**Note**: The some esp-idf versions have a bug with the Python tool *esptool.py*. They will need the following shebang line added to the start of the code at /home/iot/esp/esp-idf/components/esptool_py/esptool/esptool.py if the shebang line is missing. Any text editor can be used to add this line, one example is *nano*.
-```
-#!/usr/bin/env python
-```
-
 Please refer to [the use of esptool.py](https://docs.espressif.com/projects/esptool/en/latest/esp32/) for more information. The following command will retrieve the partition table of the IoT kit flash in the binary format:
-```sh
+```
 esptool.py read_flash 0x8000 0xc00 ptable.img
 ```
 where 0x8000 is the start address of the partition table and 0xc00 is the length of the partition table. The binary partition table is saved in ptable.img. 
 
+**Note**: Some esp-idf versions have a bug with the Python tool *esptool.py* while our VM is configured right. They will need the following shebang line added to the start of the code at /home/iot/esp/esp-idf/components/esptool_py/esptool/esptool.py if the shebang line is missing. Any text editor can be used to add this line, one example is *nano*.
+```
+#!/usr/bin/env python
+```
+
 ### Print out partition table
 
 Please refer to [the use of gen_esp32part.py](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/partition-tables.html) for more information. The following command will print out the partition table of our IoT kit in the CSV (comma-separated values) format. The partition table shows how the flash memory of the ESP32 is partitioned. 
-```sh
+```
 gen_esp32part.py ptable.img
 ```
 
