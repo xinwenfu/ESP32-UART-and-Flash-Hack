@@ -8,10 +8,10 @@ If the UART ports and flash of a device are not protected, various exploits are 
 
 ## Build and run the WiFi station firmware
 
-In this lab, we will work on the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) in our environment. On our Ubuntu VM, through VS Code, we can build the */home/iot/esp/esp-idf/examples/wifi/getting_started/station/* project, which connects the IoT kit to a wireless router (often called AP), and flash the firmware onto the IoT kit.
+In this lab, we will work on the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) in our environment located at */home/iot/esp/esp-idf/examples/wifi/getting_started/station/*. This ESP-IDF project has been included in this repository for the students convince. On our Ubuntu VM, through VS Code, we can build this project, which connects the IoT kit to a wireless router (often called AP), and flash the firmware onto the IoT kit.
 
 ### Open the WiFi station example project
-Within VS Code, open the tab *File* -> *Open Folder* ... -> Navigate to the folder /home/iot/esp/esp-idf/examples/wifi/getting_started/station/ -> *Open*
+Within VS Code, open the tab *File* -> *Open Folder* ... -> Navigate to the ESP32-UART-and-Flash-Hack -> *Open*
 
 <img src="https://user-images.githubusercontent.com/69218457/223019335-9143af50-390c-4526-a18d-9cd49f96c984.png" width=640>
 
@@ -90,13 +90,47 @@ The following screenshot shows how to use *Edit* -> *Find* within wxhexeditor to
 **Notice**: When you run wxhexeditor, you may get an error when using the *find* utility as shown below. Click *Continue*, otherwise the program will exit.
 <img src="Imgs/WXhex-Error.png" width = 640>
 
-
-
 ## Change the firmware
-The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The changed flash dump can be flash back to the IoT kit. Another firmware may be written. esptool.py can be used to write the changed firmware back to the ESP32.
+The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The changed flash dump can be flashed back into the IoT kit. Another different firmware may be written to the device as well. The esptool.py program can be used to write the modified firmware back to the ESP32.
+
+It should be noted that the ESP32 utilizes a *checksum hash* to verify the factory APP partition. Unless this value is changed, the bootloader will panic on startup, and fail to run the changed APP partition. It is possible for us to modify the bootloader if *secure-boot* is not enabled.
+
+The first option you have is locating the *checksum hash*, modifying it, and writing the modified firmware to the device. The second and third options involve configuring the project bootloader to not verify the APP partition using menuconfig. This is accessed through the gear button at the bottom of the VS Code page, or through the command ```idf.py menuconfig``` in a ```esp-idf terminal```.  
+
 ```sh
-esptool.py write_flash 0 flash_contents_good.bin
+# Bootloader Config -> Skip image validation always
+idf.py menuconfig 
 ```
+
+After this, when doing the *second option* we can re-flash the entire firmware, and re-extract the binary, modify it, and write it with the command below.
+
+```sh
+# Extract Firmware
+esptool.py read_flash 0 0x40000 flash_contents_all.bin
+
+# Write to device
+esptool.py write_flash 0 flash_contents_all_changed.bin
+```
+
+Alternatively, we can re-flash *only* the bootloader with the modifications made by our new configuration. For this we would want to dump data starting from the ```0x9000``` address offset, as we want to write everything *but* the bootloader.
+
+An example process is provided.
+1. Extract Firmware (Excluding the bootloader)
+    ```sh
+    esptool.py read_flash 0x9000 0x31000 flash_contents_no_boot.bin
+    ```
+2. compile new bootloader
+    ```sh
+    idf.py bootloader
+    ```
+3. Flash bootloader
+    ```sh
+    idf.py bootloader-flash
+    ```
+4. Write the modified firmware
+    ```sh
+    esptool.py write_flash 0x9000 flash_contents_no_boot_modified.bin
+    ```
 
 # Notes
 
