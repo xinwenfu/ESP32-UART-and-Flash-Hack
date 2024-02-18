@@ -61,7 +61,7 @@ Please refer to [the use of gen_esp32part.py](https://docs.espressif.com/project
 gen_esp32part.py ptable.img
 ```
 
-## Search firmware for sensitive info
+## 3. Search firmware for sensitive info
 ### Retrieve firmware
 The following command retrieves the entire flash memory of the device although students can also refer to the partition table and print out only the occupied part of the flash.
 ```sh
@@ -91,7 +91,7 @@ The following screenshot shows how to use *Edit* -> *Find* within wxhexeditor to
 **Notice**: When you run wxhexeditor, you may get an error when using the *find* utility as shown below. Click *Continue*, otherwise the program will exit.
 <img src="Imgs/WXhex-Error.png" width = 640>
 
-## Change the firmware
+## 4. Change the firmware
 The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The changed flash dump can be flashed back into the IoT kit. Another different firmware may be written to the device as well. The esptool.py program can be used to write the modified firmware back to the ESP32.
 
 It should be noted that the ESP32 utilizes a *checksum hash* to verify the factory APP partition. Unless this value is changed, the bootloader will panic on startup, and fail to run the changed APP partition. It is possible for us to modify the bootloader if *secure-boot* is not enabled.
