@@ -34,7 +34,7 @@ Please refer to the screenshot above, build the project, flash device and monito
 We now can perform the ethical hacking of the IoT kit, we will try to obtain the WiFi credentials embedded in the firmware and even modify the firmware. This has to be done within a terminal. We will use the Linux terminal to do it.
 
 ### Start ESP-IDF terminal
-Close VS Code.
+**Close VS Code**. Otherwise, there will be errors?
 
 Open a Linux terminal. Within the terminal, run the following command to set environment variables for all the ESP-IDF tools.
 ```sh
