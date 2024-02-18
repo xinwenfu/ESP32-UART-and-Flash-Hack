@@ -6,7 +6,7 @@ There are three serial ports on the original ESP32. UART0 is often used for prog
 
 If the UART ports and flash of a device are not protected, various exploits are possible.
 
-## Build and run the WiFi station firmware
+## 1. Build and run the WiFi station firmware
 
 In this lab, we will work on the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) in our environment located at */home/iot/esp/esp-idf/examples/wifi/getting_started/station/*. This ESP-IDF project has been included in this repository for the students convince. On our Ubuntu VM, through VS Code, we can build this project, which connects the IoT kit to a wireless router (often called AP), and flash the firmware onto the IoT kit.
 
@@ -30,12 +30,13 @@ Please refer to the screenshot above, build the project, flash device and monito
 
 <img src="Imgs/WiFi-Station-Connected.PNG" width=640>
 
-## Retrieve partition table
-We now can perform the ethical hacking of the IoT kit, we will try to obtain the WiFi credentials embedded in the firmware and even modify the firmware. This has to be done within a terminal. We will use the ESP-IDF terminal within VS Code to do it.
+## 2. Retrieve partition table
+We now can perform the ethical hacking of the IoT kit, we will try to obtain the WiFi credentials embedded in the firmware and even modify the firmware. This has to be done within a terminal. We will use the Linux terminal to do it.
 
 ### Start ESP-IDF terminal
+Close VS Code.
 
-*Open ESP-IDF Terminal* as shown in the screenshot in [Configure WiFi](#configure-wifi). Within the terminal, run the following command to set environment variables for all the ESP-IDF tools.
+Open a Linux terminal. Within the terminal, run the following command to set environment variables for all the ESP-IDF tools.
 ```sh
 . $HOME/esp/esp-idf/export.sh
 ```
