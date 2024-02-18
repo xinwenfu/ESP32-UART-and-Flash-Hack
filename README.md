@@ -11,7 +11,7 @@ If the UART ports and flash of a device are not protected, various exploits are 
 In this lab, we will work on the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) in our environment located at */home/iot/esp/esp-idf/examples/wifi/getting_started/station/*. This ESP-IDF project has been included in this repository for the students convince. On our Ubuntu VM, through VS Code, we can build this project, which connects the IoT kit to a wireless router (often called AP), and flash the firmware onto the IoT kit.
 
 ### Open the WiFi station example project
-Within VS Code, open the tab *File* -> *Open Folder* ... -> Navigate to the ESP32-UART-and-Flash-Hack -> *Open*
+Within VS Code, open the tab *File* -> *Open Folder* ... -> */home/iot/esp/esp-idf/examples/wifi/getting_started/station/* -> *Open*
 
 <img src="https://user-images.githubusercontent.com/69218457/223019335-9143af50-390c-4526-a18d-9cd49f96c984.png" width=640>
 
