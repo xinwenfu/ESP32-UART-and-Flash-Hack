@@ -8,7 +8,7 @@ If the UART ports and flash of a device are not protected, various exploits are 
 
 ## 1. Build and run the WiFi station firmware
 
-In this lab, we will work on the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) in our environment located at */home/iot/esp/esp-idf/examples/wifi/getting_started/station/*. This ESP-IDF project has been included in this repository for the students convince. On our Ubuntu VM, through VS Code, we can build this project, which connects the IoT kit to a wireless router (often called AP), and flash the firmware onto the IoT kit.
+In this lab, we will work on the [WiFi station example](https://github.com/espressif/esp-idf/tree/master/examples/wifi/getting_started/station) in our environment located at */home/iot/esp/esp-idf/examples/wifi/getting_started/station/*. This ESP-IDF project has been included in this repository for the student's convince. On our Ubuntu VM, through VS Code, we can build this project, which connects the IoT kit to a wireless router (often called AP), and flash the firmware onto the IoT kit.
 
 ### Open the WiFi station example project
 Within VS Code, open the tab *File* -> *Open Folder* -> Navigate to */home/iot/esp/esp-idf/examples/wifi/getting_started/station/* -> *Open*
@@ -23,7 +23,7 @@ Once the WiFi station example project is opened, within VS Code, click the *ESP-
 
 ### Build, flash and monitor
 
-Please refer to the screenshot above, build the project, flash device and monitor device.
+Please refer to the screenshot above, build the project, flash and monitor the device.
 1. Build Project. *Show Running Tasks* to see the progress while building the project.
 2. Flash device. Choose the right USB port, e.g., /dev/ttyACM0.
 3. Monitor device. You shall see the ESP32 device is connected to the WiFi as the screenshot shown below.
@@ -47,9 +47,9 @@ Please refer to [the use of esptool.py](https://docs.espressif.com/projects/espt
 ```
 esptool.py read_flash 0x8000 0xc00 ptable.img
 ```
-where 0x8000 is the start address of the partition table and 0xc00 is the length of the partition table. The binary partition table is saved in ptable.img. 
+where 0x8000 is the start address of the partition table and 0xc00 is the length of the partition table. The binary partition table will be saved in the file ptable.img. 
 
-**Note**: Some esp-idf versions have a bug with the Python tool *esptool.py* while our VM is configured right. They will need the following shebang line added to the start of the code at /home/iot/esp/esp-idf/components/esptool_py/esptool/esptool.py if the shebang line is missing. Any text editor can be used to add this line, one example is *nano*.
+**Note**: Some esp-idf versions have a bug with the Python tool *esptool.py* while our VM is configured correctly. They will need the following shebang line added to the start of the code at `/home/iot/esp/esp-idf/components/esptool_py/esptool/esptool.py` if the shebang line is missing. Any text editor can be used to add this line, one example is *nano*.
 ```
 #!/usr/bin/env python
 ```
@@ -63,7 +63,7 @@ gen_esp32part.py ptable.img
 
 ## 3. Search firmware for sensitive info
 ### Retrieve firmware
-The following command retrieves the entire flash memory of the device although students can also refer to the partition table and print out only the occupied part of the flash.
+The following command retrieves the entire flash memory of the device although students can also refer to the partition table and print out only the occupied part of the flash memory.
 ```sh
 esptool.py read_flash 0 0x400000 flash_contents.bin
 ```
@@ -78,7 +78,7 @@ sudo apt-get install wxhexeditor                      #Install wxhexeditor  and 
 sudo ln -s /usr/bin/wxHexEditor /usr/bin/wxhexeditor  #Create a symbolic to use the lowercase command wxhexeditor
 ```
 
-This can be launched from the application page of Ubuntu, or the *Terminal*. The following is how to launch wxhexeditor and open a file "flash_contents.bin" from the *Terminal*.
+This can be launched from the application page of Ubuntu, or the *Terminal*. The following command is used to launch wxhexeditor and open a file "flash_contents.bin" from the *Terminal*.
 ```sh
 wxhexeditor flash_contents.bin
 ```
@@ -96,7 +96,7 @@ The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The chan
 
 It should be noted that the ESP32 utilizes a *checksum hash* to verify the factory APP partition. Unless this value is changed, the bootloader will panic on startup, and fail to run the changed APP partition. It is possible for us to modify the bootloader if *secure-boot* is not enabled.
 
-There are three possible methods for us to use when preforming this attack while preventing the bootloader from entering a panicked state. The first option we have is locating the *checksum hash*, modifying it, and writing both the modified firmware and bootloader to the device. The first method would not involve a recompilation of the bootloader or firmware but is the most difficult. The second and third options involve configuring the project's bootloader to not verify the APP partition's checksum, this is done using menuconfig which can be accessed through the gear button at the bottom of the VS Code page, or through the command ```idf.py menuconfig``` in an ```esp-idf terminal```.  Both the second and third options involve recompiling either the entire project, or just the boot loader. Below the second and third options are shown.
+There are a few possible methods for us to use when preforming this attack while preventing the bootloader from entering a panicked state. The first option we have is locating the *checksum hash*, modifying it, and writing both the modified firmware and bootloader to the device. The first method would not involve a recompilation of the bootloader or firmware but is the most difficult. The second option involve configuring the project's bootloader to not verify the APP partition's checksum, this is done using menuconfig which can be accessed through the gear button at the bottom of the VS Code page, or through the command ```idf.py menuconfig``` in an ```esp-idf terminal```.  This involve recompiling either the entire project, or just the boot loader. Below the second option is shown.
 
 
 *Bootloader Configuration*:
@@ -107,7 +107,7 @@ First we need to configure the bootloader to not verify the checksum hash.
 idf.py menuconfig 
 ```
 
-<!-- After this, when doing the *second option* we can re-flash the entire firmware, and re-extract the binary, modify it, and write it with the command below. -->
+<!-- After this, when doing the *second option* we can re-flash the entire firmware, and re-extract the binary, modify it, and write it with the command below. 
 *Second Option*: 
 
 First we need to recompile and flash the project onto the device, this can be done from within VSCode, or it may be done inside of an ```esp-idf terminal``` using the command `idf.py build flash`. 
@@ -125,8 +125,9 @@ esptool.py write_flash 0 flash_contents_all_changed.bin
 ```
 
 *Third Option*:
+-->
 
-Alternatively, we can re-flash the bootloader with the modifications made by our new configuration, and *only* extract the firmware. For this we would want to dump data starting from the ```0x9000``` address offset, as we want to extract everything *but* the bootloader.
+Then, we can re-flash the bootloader with the modifications made by our new configuration, and *only* extract the firmware. For this we would want to dump data starting from the ```0x9000``` address offset, as we want to extract everything *but* the bootloader.
 
 1. Extract Firmware (Excluding the bootloader).
     ```sh
