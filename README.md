@@ -113,6 +113,7 @@ esptool.py read_flash 0 0x40000 flash_contents_all.bin
 esptool.py write_flash 0 flash_contents_all_changed.bin
 ```
 
+<!--
 Alternatively, we can re-flash *only* the bootloader with the modifications made by our new configuration. For this we would want to dump data starting from the ```0x9000``` address offset, as we want to write everything *but* the bootloader.
 
 An example process is provided.
@@ -132,7 +133,7 @@ An example process is provided.
     ```sh
     esptool.py write_flash 0x9000 flash_contents_no_boot_modified.bin
     ```
-
+-->
 # Notes
 
 [HxD](https://mh-nexus.de/en/hxd/) is a better freeware hex editor and disk editor for Windows than wxhexeditor.
