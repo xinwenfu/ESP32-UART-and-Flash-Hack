@@ -95,6 +95,12 @@ The following screenshot shows how to use *Edit* -> *Find* within wxhexeditor to
 ### Option 0
 The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The changed flash dump can be flashed back into the IoT kit. Another different firmware may be written to the device as well. The esptool.py program can be used to write the modified firmware back to the ESP32.
 
+
+```sh
+# Write to device
+esptool.py write_flash 0 flash_contents_all_changed.bin
+```
+
 It should be noted that the ESP32 utilizes a *checksum hash* to verify the factory APP partition. Unless this value is changed, the bootloader will panic on startup, and fail to run the changed APP partition. It is possible for us to modify the bootloader if *secure-boot* is not enabled.
 
 ### Option 1
