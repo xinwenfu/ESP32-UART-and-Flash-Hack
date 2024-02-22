@@ -92,22 +92,23 @@ The following screenshot shows how to use *Edit* -> *Find* within wxhexeditor to
 <img src="Imgs/WXhex-Error.png" width = 640>
 
 ## 4. Change the firmware
-The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The changed flash dump can be flashed back into the IoT kit. Another different firmware may be written to the device as well. The esptool.py program can be used to write the modified firmware back to the ESP32.
+### Option 0
+TThe hex editor (e.g. wxhexeditor) can be used to change the flash dump. The changed flash dump can be flashed back into the IoT kit. Another different firmware may be written to the device as well. The esptool.py program can be used to write the modified firmware back to the ESP32.
 
 It should be noted that the ESP32 utilizes a *checksum hash* to verify the factory APP partition. Unless this value is changed, the bootloader will panic on startup, and fail to run the changed APP partition. It is possible for us to modify the bootloader if *secure-boot* is not enabled.
 
 ### Option 1
-The first option you have is locating the *checksum hash*, modifying it, and writing the modified firmware to the device. 
+The option is locating the *checksum hash*, modifying it, and writing the modified firmware to the device. 
 
 ### Option 2
-The second involves configuring the project bootloader to not verify the APP partition using menuconfig. This is accessed through the gear button at the bottom of the VS Code page, or through the command ```idf.py menuconfig``` in a terminal.  
+The option involves configuring the project bootloader to not verify the APP partition using menuconfig. This is accessed through the gear button at the bottom of the VS Code page, or through the command ```idf.py menuconfig``` in a terminal.  
 
 ```sh
 # Bootloader Config -> Skip image validation always
 idf.py menuconfig 
 ```
 
-After this, when doing the *second option* we can re-flash the entire firmware, and re-extract the binary, modify it, and write it with the command below.
+After this, we can re-flash the entire firmware, and re-extract the binary, modify it, and write it with the command below.
 
 ```sh
 # Extract Firmware
