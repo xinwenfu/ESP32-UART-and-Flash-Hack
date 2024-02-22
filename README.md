@@ -96,7 +96,11 @@ The hex editor (e.g. wxhexeditor) can be used to change the flash dump. The chan
 
 It should be noted that the ESP32 utilizes a *checksum hash* to verify the factory APP partition. Unless this value is changed, the bootloader will panic on startup, and fail to run the changed APP partition. It is possible for us to modify the bootloader if *secure-boot* is not enabled.
 
-The first option you have is locating the *checksum hash*, modifying it, and writing the modified firmware to the device. The second and third options involve configuring the project bootloader to not verify the APP partition using menuconfig. This is accessed through the gear button at the bottom of the VS Code page, or through the command ```idf.py menuconfig``` in a ```esp-idf terminal```.  
+### Option 1
+The first option you have is locating the *checksum hash*, modifying it, and writing the modified firmware to the device. 
+
+### Option 2
+The second involves configuring the project bootloader to not verify the APP partition using menuconfig. This is accessed through the gear button at the bottom of the VS Code page, or through the command ```idf.py menuconfig``` in a terminal.  
 
 ```sh
 # Bootloader Config -> Skip image validation always
