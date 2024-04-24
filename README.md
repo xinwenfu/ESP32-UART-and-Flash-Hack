@@ -21,6 +21,10 @@ Once the WiFi station example project is opened, within VS Code, click the *ESP-
 
 <img src="Imgs/WiFi-Station.PNG" width=640>
 
+A smartphone's hotspot can be used as a WiFi router/AP. For iPhone, the "Maximize Compatibility" shall be enabled.
+
+<img src="Imgs/iPhone-Hotspot.jpg"  width=320>
+
 ### Build, flash and monitor
 
 Please refer to the screenshot above, build the project, flash device and monitor device.
